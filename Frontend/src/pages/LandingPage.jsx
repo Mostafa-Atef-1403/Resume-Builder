@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import HERO_IMG from "../assets/hero-image.png";
 
+import { FeaturesCards } from "../context/context";
+
 const LandingPage = () => {
   const navigate = useNavigate();
   const [openAuth, setOpenAuth] = useState(false);
@@ -10,9 +12,8 @@ const LandingPage = () => {
   const handleCTA = () => {};
 
   return (
-    <div className="w-full min-h-full bg-white">
+    <div className="w-full min-h-full bg-white pb-96">
       {/* ================ The Container ================ */}
-
       <div className="container mx-auto px-4 py-6">
         {/* ================ Heade r================ */}
 
@@ -60,6 +61,25 @@ const LandingPage = () => {
             <img src={HERO_IMG} alt="HERO_IMG" className="w-full rounded-lg" />
           </div>
         </div>
+
+        {/* ================ Features ================ */}
+
+        <section className="mt-5">
+          <h2 className="text-2xl font-bold text-center mb-12">
+            Features That Make You Shine
+          </h2>
+
+          {/* features cards container */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {FeaturesCards.map((card) => (
+              // each card
+              <div className="bg-gray-50 hover:shadow-md shadow-sm p-6 rounded-xl transition">
+                <h3 className="text-lg font-semibold mb-3">{card.h3}</h3>
+                <p className="text-gray-600">{card.p}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
